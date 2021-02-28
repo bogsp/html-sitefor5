@@ -1,0 +1,112 @@
+@mixin noSpace {
+    padding: 0;
+    margin: 0;
+}
+
+// Theme Colors
+// Backgrounds
+@mixin bg-primary {
+    background-color: $primary;
+}
+
+@mixin bg-secondary {
+    background-color: $secondary;
+}
+
+@mixin bg-highlight {
+    background-color: $highlight;
+}
+
+@mixin bg-light {
+    background-color: $light;
+}
+
+@mixin bg-dark {
+    background-color: $dark;
+    color: $light;
+}
+
+@mixin bg-success {
+    background-color: $success;
+}
+
+@mixin bg-error {
+    background-color: $error;
+}
+
+@mixin bg-warning {
+    background-color: $warning;
+}
+
+// Text Colors
+@mixin primary {
+    color: $primary;
+}
+
+@mixin secondary {
+    color: $secondary;
+}
+
+@mixin highlight {
+    color: $highlight;
+}
+
+@mixin light {
+    color: $light;
+}
+
+@mixin dark {
+    color: $dark;
+}
+
+@mixin success {
+    color: $success;
+}
+
+@mixin error {
+    color: $error;
+}
+
+@mixin warning {
+    color: $warning;
+}
+
+// Layout
+// Grid
+@mixin grid {
+    display: grid;
+}
+
+// Flexbox
+@mixin flex {
+    display: flex;
+}
+
+@mixin flex-jc-sa {
+    justify-content: space-around;
+}
+
+@mixin flex-jc-sb {
+    justify-content: space-between;
+}
+
+@mixin flex-jc-c {
+    justify-content: center;
+}
+
+@mixin flex-ai-c {
+    align-items: center;
+}
+
+// Breakpoints
+@mixin breakpoint-up ($size) {
+    @media (min-width: map-get($breakpointsUp, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down ($size) {
+    @media (max-width: map-get($breakpointsDown, $size)) {
+        @content;
+    }
+}

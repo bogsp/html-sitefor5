@@ -1,0 +1,39 @@
+/* Global Styles */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    @include noSpace();
+}
+
+html {
+    overflow-x: hidden;
+    font-size: $fontSize;
+}
+
+body {
+    font-family: $fontBody;
+    font-size: 1.6rem;
+    line-height: $lineHeight;
+    letter-spacing: $letterSpacing;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    transition: opacity 300ms ease-in-out;
+    &:hover {
+        opacity: .75;
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+img {
+    width: 100%;
+}

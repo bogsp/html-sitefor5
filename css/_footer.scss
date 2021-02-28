@@ -1,0 +1,21 @@
+/* Footer */
+
+.footer-container {
+    @include bg-dark;
+}
+
+footer {
+    height: 10vh;
+    font-size: 1.2rem;
+    @include flex;
+    @include flex-jc-sb;
+    @include flex-ai-c;
+    .social {
+        a {
+            font-size: 1.2rem;
+            &:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

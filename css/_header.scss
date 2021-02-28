@@ -1,0 +1,40 @@
+/* Header */
+
+header {
+    height: 10vh;
+    @include flex;
+    @include flex-jc-sb;
+    @include flex-ai-c;
+    .logo img {
+        width: 30%;
+    }
+    .logo h1 {
+        @include noSpace;
+    }
+    .hamburger {
+        cursor: pointer;
+        @include breakpoint-up("md") {
+            display: none;
+        }
+        span {
+            width: 3rem;
+            height: .2rem;
+            display: block;
+            @include bg-primary;
+        }
+    }
+    .hamburger span:not(:last-child) {
+        margin-bottom: .5rem;
+    }
+    .nav-links {
+        @include breakpoint-down("sm") {
+            display: none;
+        }
+        a {
+            font-size: 1.4rem;
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+    }
+}

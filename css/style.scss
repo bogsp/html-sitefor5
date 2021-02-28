@@ -1,0 +1,14 @@
+@import './variables';
+@import './mixins';
+@import './globals';
+@import './layout';
+@import './header';
+@import './footer';
+// @import './media';
+
+/* Custom Styles*/
+
+section {
+    min-height: 80vh;
+    padding: 5rem 0;
+}

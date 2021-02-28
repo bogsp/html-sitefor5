@@ -1,0 +1,22 @@
+// Colors
+$primary: #808080;
+$secondary: #afafaf;
+$highlight: #dddddd;
+$light: #fff;
+$dark: #333333;
+$success: #009900;
+$error: #990000;
+$warning: #ffbb00;
+// Typography
+$fontBody: 'Roboto',
+sans-serif;
+$fontHeading: 'Roboto',
+sans-serif;
+$fontSize: 62.5%;
+$lineHeight: 1.5rem;
+$letterSpacing: .05rem;
+// Breakpoints
+// 640px, 1024px, 1440px
+$breakpointsUp: ("md":"760px", "lg":"1024px", "xl":"1440px");
+// 639px, 1023px, 1439px
+$breakpointsDown: ("sm":"759px", "md":"1023px", "lg":"1439px");

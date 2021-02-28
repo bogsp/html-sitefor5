@@ -1,0 +1,19 @@
+/* Layouts */
+
+
+/* Grid */
+
+.grid-main {
+    @include grid;
+    grid-template-columns: 10vw 1fr 10vw;
+    .grid-content {
+        grid-column: 2/3;
+    }
+}
+
+.flex-nav,
+.flex-footer {
+    @include flex;
+    @include flex-jc-sb;
+    @include flex-ai-c;
+}
