@@ -9,6 +9,9 @@
     .grid-content {
         grid-column: 2/3;
     }
+    @include breakpoint-up("xxl") {
+        grid-template-columns: 20vw 1fr 20vw;
+    }
 }
 
 .flex-nav,

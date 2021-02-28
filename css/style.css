@@ -43,6 +43,10 @@ img {
      object-fit: cover;
 }
 
+section {
+  padding: 5rem 0;
+}
+
 /* Layouts */
 /* Grid */
 .grid-main {
@@ -56,6 +60,13 @@ img {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
+}
+
+@media (min-width: 2560px) {
+  .grid-main {
+    -ms-grid-columns: 20vw 1fr 20vw;
+        grid-template-columns: 20vw 1fr 20vw;
+  }
 }
 
 .flex-nav,
@@ -135,6 +146,12 @@ header .nav-links a:not(:last-child) {
   color: #fff;
 }
 
+@media (max-width: 759px) {
+  .footer-container {
+    padding: 3rem 0;
+  }
+}
+
 footer {
   height: 10vh;
   font-size: 1.2rem;
@@ -149,6 +166,15 @@ footer {
           align-items: center;
 }
 
+@media (max-width: 759px) {
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 footer .social a {
   font-size: 1.2rem;
 }
@@ -157,14 +183,10 @@ footer .social a:not(:last-child) {
   margin-right: 1rem;
 }
 
-/* Custom Styles*/
-section {
-  padding: 5rem 0;
-}
-
 /* Home Page */
 #hero {
   height: 90vh;
+  max-height: 1080px;
   width: 100%;
   background: url("/images/img-1920x1080.png") no-repeat center top;
   background-size: cover;
@@ -251,10 +273,20 @@ section {
   }
 }
 
+@media (min-width: 2560px) {
+  #gallery .gallery-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[6];
+        grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 #gallery .gallery-container a img {
   height: 100%;
 }
 
+/* Custom Styles*/
 /* About Pge*/
 /* Contact Pge*/
 /*# sourceMappingURL=style.css.map */

@@ -114,6 +114,10 @@
     display: flex;
 }
 
+@mixin flex-col {
+    flex-direction: column;
+}
+
 @mixin flex-jc-sa {
     justify-content: space-around;
 }
