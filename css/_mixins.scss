@@ -38,6 +38,10 @@
     background-color: $warning;
 }
 
+@mixin bg-transparent {
+    background-color: transparent;
+}
+
 // Text Colors
 @mixin primary {
     color: $primary;
@@ -71,10 +75,38 @@
     color: $warning;
 }
 
+// Elements
+@mixin btn ($color, $border: false, $text: $light) {
+    padding: 1rem 2rem;
+    @if $border {
+        color: $color;
+        background-color: transparent;
+        border: 2px $color solid;
+        transition: all 300ms ease-in-out;
+        &:hover {
+            background-color: $color;
+            color: $text;
+        }
+    }
+    @else {
+        background-color: $color;
+        color: $text;
+    }
+}
+
+@mixin btnRadius($radius) {
+    border-radius: map-get($map: $btnRadius, $key: $radius);
+}
+
 // Layout
 // Grid
 @mixin grid {
     display: grid;
+}
+
+@mixin grid-col($repeat) {
+    @include grid;
+    grid-template-columns: repeat($repeat, 1fr);
 }
 
 // Flexbox

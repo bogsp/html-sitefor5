@@ -33,12 +33,14 @@ a:hover {
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 5rem;
+  margin-bottom: 3rem;
 }
 
 img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* Layouts */
@@ -157,7 +159,102 @@ footer .social a:not(:last-child) {
 
 /* Custom Styles*/
 section {
-  min-height: 80vh;
   padding: 5rem 0;
 }
+
+/* Home Page */
+#hero {
+  height: 90vh;
+  width: 100%;
+  background: url("/images/img-1920x1080.png") no-repeat center top;
+  background-size: cover;
+}
+
+#blurbs .grid-content {
+  padding: 7rem 0;
+  text-align: center;
+}
+
+#blurbs .grid-content .blurb-container {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+@media (max-width: 759px) {
+  #blurbs .grid-content .blurb-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#blurbs .grid-content .blurb-container .blurb-title {
+  padding: 3rem 0 0 0;
+  font-size: 3rem;
+}
+
+#blurbs .grid-content .blurb-container .blurb-content {
+  padding: 0 0 5rem 0;
+}
+
+#blurbs .grid-content .blurb-container .blurb-btn {
+  padding: 1rem 2rem;
+  color: #808080;
+  background-color: transparent;
+  border: 2px #808080 solid;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  border-radius: 5rem;
+}
+
+#blurbs .grid-content .blurb-container .blurb-btn:hover {
+  background-color: #808080;
+  color: #fff;
+}
+
+#gallery .grid-content {
+  text-align: center;
+}
+
+#gallery .gallery-container {
+  padding: 3rem 0;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1023px) {
+  #gallery .gallery-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 759px) {
+  #gallery .gallery-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+#gallery .gallery-container a img {
+  height: 100%;
+}
+
+/* About Pge*/
+/* Contact Pge*/
 /*# sourceMappingURL=style.css.map */

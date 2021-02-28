@@ -4,11 +4,75 @@
 @import './layout';
 @import './header';
 @import './footer';
-// @import './media';
 
 /* Custom Styles*/
 
 section {
-    min-height: 80vh;
-    padding: 5rem 0;
+    padding: $lg 0;
 }
+
+
+/* Home Page */
+
+#hero {
+    height: 90vh;
+    width: 100%;
+    background: url('/images/img-1920x1080.png') no-repeat center top;
+    background-size: cover;
+}
+
+#blurbs {
+    .grid-content {
+        padding: $xl 0;
+        text-align: center;
+        .blurb-container {
+            width: 100%;
+            text-align: center;
+            padding: $md 0;
+            @include grid-col(3);
+            gap: $lg;
+            @include breakpoint-down("sm") {
+                @include grid-col(1);
+            }
+            .blurb-title {
+                padding: $md 0 0 0;
+                font-size: $md;
+            }
+            .blurb-content {
+                padding: 0 0 $lg 0;
+            }
+            .blurb-btn {
+                @include btn($primary,
+                true);
+                @include btnRadius("lg");
+            }
+        }
+    }
+}
+
+#gallery {
+    .grid-content {
+        text-align: center;
+    }
+    .gallery-container {
+        padding: $md 0;
+        width: 100%;
+        @include grid;
+        @include grid-col(4);
+        @include breakpoint-down("md") {
+            @include grid-col(2);
+        }
+        @include breakpoint-down("sm") {
+            @include grid-col(1);
+        }
+        a img {
+            height: 100%;
+        }
+    }
+}
+
+
+/* About Pge*/
+
+
+/* Contact Pge*/
