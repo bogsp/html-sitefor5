@@ -16,6 +16,9 @@ footer {
     @include breakpoint-down("sm") {
         @include flex-col;
     }
+    .copyright p {
+        @include noSpace;
+    }
     .social {
         a {
             font-size: 1.2rem;
