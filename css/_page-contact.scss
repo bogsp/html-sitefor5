@@ -1,0 +1,21 @@
+#contact {
+    .grid-content {
+        min-height: 64.8vh;
+        @include grid-2(false);
+        gap: $lg;
+        .info-container {
+            h2 {
+                padding: $sm 0 $md;
+            }
+        }
+        .form-container {
+            form {
+                @include grid-col(2);
+                gap: $md;
+                .col-s2 {
+                    @include grid-col-span(2);
+                }
+            }
+        }
+    }
+}

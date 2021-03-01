@@ -15,7 +15,6 @@ html {
 body {
     font-family: $fontBody;
     font-size: 1.6rem;
-    line-height: $lineHeight;
     letter-spacing: $letterSpacing;
     overflow: hidden;
 }
@@ -23,7 +22,7 @@ body {
 a {
     text-decoration: none;
     color: $primary;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity $transition ease-in-out;
     &:hover {
         opacity: .75;
     }
@@ -34,6 +33,15 @@ h1 {
     margin-bottom: $md;
 }
 
+h2 {
+    font-size: $md;
+    margin-bottom: $sm;
+}
+
+p {
+    margin-bottom: $md;
+}
+
 img {
     width: 100%;
     object-fit: cover;
@@ -41,4 +49,94 @@ img {
 
 section {
     padding: $lg 0;
+}
+
+
+/* Forms */
+
+textarea,
+input[type=text],
+input[type=email] {
+    padding-top: $md;
+    @include fix-hw;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+input[type=submit] {
+    outline: none;
+    border: none;
+    width: fit-content;
+    font-size: 1.6rem;
+    @include btn($primary);
+    @include btnRadius("lg");
+    cursor: pointer;
+    transition: opacity $transition ease-in-out;
+    &:hover {
+        opacity: .75;
+    }
+}
+
+input[type=text]:focus+.label-text .input-content,
+input[type=text]:valid+.label-text .input-content,
+input[type=email]:focus+.label-email .input-content,
+input[type=email]:valid+.label-email .input-content,
+textarea:valid+.label-textarea .textarea-content,
+textarea:focus+.label-textarea .textarea-content {
+    transform: translateY(-100%);
+    font-size: 1.4rem;
+    color: $primary;
+}
+
+input[type=text]:focus+.label-text::after,
+input[type=text]:valid+.label-text::after,
+input[type=email]:focus+.label-email::after,
+input[type=email]:valid+.label-email::after,
+textarea:valid+.label-textarea::after,
+textarea:focus+.label-textarea::after {
+    transform: translateX(0%);
+}
+
+.label-text,
+.label-textarea,
+.label-email {
+    @include fix-hw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    border-bottom: 1px solid $dark;
+}
+
+.label-text::after,
+.label-textarea::after,
+.label-email::after {
+    position: absolute;
+    content: "";
+    bottom: -1;
+    left: 0;
+    @include fix-hw;
+    border-bottom: 1px solid $primary;
+    transform: translateX(-100%);
+    transition: all $transition ease;
+}
+
+.input-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all $transition ease;
+}
+
+.textarea-content {
+    position: absolute;
+    bottom: $lg;
+    left: 0;
+    transition: all $transition ease;
+}
+
+.input {
+    position: relative;
+    overflow: hidden;
 }

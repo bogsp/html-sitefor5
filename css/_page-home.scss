@@ -20,9 +20,6 @@
             padding: $md 0;
             @include grid-col(3);
             gap: $lg;
-            @include breakpoint-down("sm") {
-                @include grid-col(1);
-            }
             .blurb-title {
                 padding: $md 0 0 0;
                 font-size: $md;
@@ -50,9 +47,6 @@
         @include grid-col(4);
         @include breakpoint-down("md") {
             @include grid-col(2);
-        }
-        @include breakpoint-down("sm") {
-            @include grid-col(1);
         }
         @include breakpoint-up("xxl") {
             @include grid-col(6);
