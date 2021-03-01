@@ -188,6 +188,9 @@ footer .social a:not(:last-child) {
   height: 90vh;
   max-height: 1080px;
   width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center center;
   background: url("/images/img-1920x1080.png") no-repeat center top;
   background-size: cover;
 }

@@ -109,6 +109,10 @@
     grid-template-columns: repeat($repeat, 1fr);
 }
 
+@mixin grid-center {
+    place-items: center center;
+}
+
 // Flexbox
 @mixin flex {
     display: flex;
