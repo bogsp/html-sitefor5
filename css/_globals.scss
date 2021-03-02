@@ -231,18 +231,22 @@ textarea:focus+.label-textarea::after {
 
 .lightbox {
     display: none;
-    height: 100vh;
-    width: 100vw;
+    @include fix-hw;
     position: fixed;
     top: 0;
     opacity: .75;
     background-color: $dark;
     z-index: 5;
     img {
+        @include fix-hw;
         position: absolute;
-        top: 50%;
-        margin-top: -35%;
-        width: 100vw;
         object-fit: contain;
+    }
+    @include breakpoint-down("md") {
+        height: 100vh;
+        width: 100vw;
+        img {
+            width: 100vw;
+        }
     }
 }
