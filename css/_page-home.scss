@@ -7,29 +7,45 @@
     text-align: center;
     @include grid;
     @include grid-center;
-    background: url('/images/img-1920x1080.png') no-repeat center top;
+    background: url('/images/hero.jpg') no-repeat center top;
     background-size: cover;
 }
 
 #blurbs {
+    padding-top: $xl;
+    @include bg-highlight;
     .grid-content {
         text-align: center;
     }
     .blurb-container {
+        gap: $md;
+        .card {
+            overflow: hidden;
+            @include bg-dark;
+            @include noSpace;
+            padding-bottom: $lg;
+        }
+        .blurb-title {
+            padding: $md $lg $sm;
+        }
+        .blurb-content {
+            padding: $sm $lg;
+        }
         .blurb-btn {
-            @include btn($primary,
-            true);
+            @include btn($primary);
             @include btnRadius("lg");
         }
     }
 }
 
 #gallery {
+    margin-top: $md;
+    padding: $xl 0 0;
     .grid-content {
         text-align: center;
     }
     .gallery-container {
-        padding: $md 0;
+        padding: $md 0 0;
         width: 100%;
         @include grid;
         @include grid-col(4);
@@ -39,18 +55,23 @@
         @include breakpoint-up("xxl") {
             @include grid-col(8);
         }
-        a img {
+        img {
             height: 100%;
+            cursor: pointer;
         }
     }
 }
 
 #pricing {
+    @include bg-highlight;
     .grid-content {
         padding: $xl 0;
         text-align: center;
         .blurb-container {
             gap: $md;
+            .card {
+                @include bg-light;
+            }
             .blurb-btn {
                 @include btn($primary);
                 @include btnRadius("lg");

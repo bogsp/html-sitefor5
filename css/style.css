@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
 /* Effects */
 /* Global Styles */
 *,
@@ -32,9 +34,17 @@ a:hover {
   opacity: .75;
 }
 
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+}
+
 h1 {
   font-size: 5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 h2 {
@@ -54,6 +64,10 @@ img {
 
 section {
   padding: 5rem 0;
+}
+
+.special {
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 /* Forms */
@@ -213,7 +227,7 @@ textarea:focus + .label-textarea::after {
 /* Cards */
 .card {
   padding: 5rem 3rem;
-  border-radius: 1rem;
+  border-radius: 3rem;
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
@@ -221,6 +235,7 @@ textarea:focus + .label-textarea::after {
 @media (max-width: 1023px) {
   .card {
     padding: 5rem 3rem;
+    border-radius: 1rem;
   }
 }
 
@@ -275,6 +290,25 @@ textarea:focus + .label-textarea::after {
   padding: 1rem 2rem;
   background-color: #808080;
   color: #fff;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  opacity: .75;
+  background-color: #333333;
+  z-index: 5;
+}
+
+.lightbox img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /* Layouts */
@@ -534,28 +568,51 @@ footer .social a:not(:last-child) {
   display: -ms-grid;
   display: grid;
   place-items: center center;
-  background: url("/images/img-1920x1080.png") no-repeat center top;
+  background: url("/images/hero.jpg") no-repeat center top;
   background-size: cover;
+}
+
+#blurbs {
+  padding-top: 7rem;
+  background-color: #eeeeee;
 }
 
 #blurbs .grid-content {
   text-align: center;
 }
 
+#blurbs .blurb-container {
+  gap: 3rem;
+}
+
+#blurbs .blurb-container .card {
+  overflow: hidden;
+  background-color: #333333;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 5rem;
+}
+
+#blurbs .blurb-container .blurb-title {
+  padding: 3rem 5rem 1rem;
+}
+
+#blurbs .blurb-container .blurb-content {
+  padding: 1rem 5rem;
+}
+
 #blurbs .blurb-container .blurb-btn {
   display: inline-block;
   padding: 1rem 2rem;
-  color: #808080;
-  background-color: transparent;
-  border: 2px #808080 solid;
-  -webkit-transition: all 300ms ease-in-out;
-  transition: all 300ms ease-in-out;
+  background-color: #808080;
+  color: #fff;
   border-radius: 5rem;
 }
 
-#blurbs .blurb-container .blurb-btn:hover {
-  background-color: #808080;
-  color: #fff;
+#gallery {
+  margin-top: 3rem;
+  padding: 7rem 0 0;
 }
 
 #gallery .grid-content {
@@ -563,7 +620,7 @@ footer .social a:not(:last-child) {
 }
 
 #gallery .gallery-container {
-  padding: 3rem 0;
+  padding: 3rem 0 0;
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -611,8 +668,13 @@ footer .social a:not(:last-child) {
   }
 }
 
-#gallery .gallery-container a img {
+#gallery .gallery-container img {
   height: 100%;
+  cursor: pointer;
+}
+
+#pricing {
+  background-color: #eeeeee;
 }
 
 #pricing .grid-content {
@@ -622,6 +684,10 @@ footer .social a:not(:last-child) {
 
 #pricing .grid-content .blurb-container {
   gap: 3rem;
+}
+
+#pricing .grid-content .blurb-container .card {
+  background-color: #fff;
 }
 
 #pricing .grid-content .blurb-container .blurb-btn {

@@ -28,9 +28,17 @@ a {
     }
 }
 
+h1,
+h2,
+h3 {
+    font-family: $fontHeading;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+}
+
 h1 {
     font-size: $lg;
-    margin-bottom: $md;
+    margin-bottom: $sm;
 }
 
 h2 {
@@ -49,6 +57,10 @@ img {
 
 section {
     padding: $lg 0;
+}
+
+.special {
+    font-family: $fontSpecial;
 }
 
 
@@ -167,10 +179,11 @@ textarea:focus+.label-textarea::after {
 
 .card {
     padding: $lg $md;
-    border-radius: $sm;
+    border-radius: $md;
     @include shadow;
     @include breakpoint-down("md") {
         padding: $lg $md;
+        border-radius: $sm;
     }
 }
 
@@ -203,5 +216,22 @@ textarea:focus+.label-textarea::after {
     }
     .blurb-btn {
         @include btn($primary);
+    }
+}
+
+
+/* Lightbox */
+
+.lightbox {
+    display: none;
+    @include fix-hw;
+    position: fixed;
+    top: 0;
+    opacity: .75;
+    background-color: $dark;
+    z-index: 5;
+    img {
+        @include fix-hw;
+        object-fit: contain;
     }
 }
