@@ -54,6 +54,19 @@ section {
 
 /* Forms */
 
+.form-container {
+    form {
+        @include grid-col(2);
+        gap: $md;
+        .col-s2 {
+            @include grid-col-span(2);
+        }
+        @include breakpoint-down("md") {
+            gap: $sm;
+        }
+    }
+}
+
 textarea,
 input[type=text],
 input[type=email] {
@@ -139,4 +152,48 @@ textarea:focus+.label-textarea::after {
 .input {
     position: relative;
     overflow: hidden;
+}
+
+
+/* Cards */
+
+.card {
+    padding: $lg $md;
+    border-radius: $sm;
+    @include shadow;
+    @include breakpoint-down("md") {
+        padding: $lg $md;
+    }
+}
+
+
+/* Blurbs */
+
+.blurb-container {
+    width: 100%;
+    text-align: center;
+    padding: $md 0;
+    @include grid-col(3);
+    gap: $lg;
+    .blurb-icon {
+        color: $primary;
+        font-size: $xl;
+    }
+    .blurb-title {
+        padding: $md 0 0 0;
+        font-size: $md;
+        color: $primary;
+        @include breakpoint-down("md") {
+            font-size: 2rem;
+        }
+        @include breakpoint-down("sm") {
+            font-size: $md;
+        }
+    }
+    .blurb-content {
+        padding-bottom: $sm;
+    }
+    .blurb-btn {
+        @include btn($primary);
+    }
 }

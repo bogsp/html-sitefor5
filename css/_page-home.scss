@@ -4,6 +4,7 @@
     height: 90vh;
     max-height: 1080px;
     width: 100%;
+    text-align: center;
     @include grid;
     @include grid-center;
     background: url('/images/img-1920x1080.png') no-repeat center top;
@@ -12,26 +13,13 @@
 
 #blurbs {
     .grid-content {
-        padding: $xl 0;
         text-align: center;
-        .blurb-container {
-            width: 100%;
-            text-align: center;
-            padding: $md 0;
-            @include grid-col(3);
-            gap: $lg;
-            .blurb-title {
-                padding: $md 0 0 0;
-                font-size: $md;
-            }
-            .blurb-content {
-                padding: 0 0 $lg 0;
-            }
-            .blurb-btn {
-                @include btn($primary,
-                true);
-                @include btnRadius("lg");
-            }
+    }
+    .blurb-container {
+        .blurb-btn {
+            @include btn($primary,
+            true);
+            @include btnRadius("lg");
         }
     }
 }
@@ -49,10 +37,24 @@
             @include grid-col(2);
         }
         @include breakpoint-up("xxl") {
-            @include grid-col(6);
+            @include grid-col(8);
         }
         a img {
             height: 100%;
+        }
+    }
+}
+
+#pricing {
+    .grid-content {
+        padding: $xl 0;
+        text-align: center;
+        .blurb-container {
+            gap: $md;
+            .blurb-btn {
+                @include btn($primary);
+                @include btnRadius("lg");
+            }
         }
     }
 }

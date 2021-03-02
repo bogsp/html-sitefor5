@@ -8,8 +8,11 @@ header {
     .logo img {
         width: 30%;
     }
-    .logo h1 {
+    .logo h1,
+    .logo h2 {
         @include noSpace;
+        text-transform: uppercase;
+        font-weight: 300;
     }
     .hamburger {
         cursor: pointer;
