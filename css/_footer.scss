@@ -5,7 +5,7 @@
     @include bg-dark;
     @include breakpoint-down("sm") {
         padding: $md 0;
-        height: 30vh;
+        height: 25vh;
     }
 }
 
@@ -27,5 +27,13 @@ footer {
     }
     @include breakpoint-down("sm") {
         @include flex-col;
+        .social {
+            a {
+                font-size: 3rem;
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+            }
+        }
     }
 }
