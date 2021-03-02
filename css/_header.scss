@@ -1,6 +1,7 @@
         /* Header */
         
         header {
+            overflow: hidden;
             height: 10vh;
             @include flex;
             @include flex-jc-sb;

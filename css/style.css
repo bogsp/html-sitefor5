@@ -10,8 +10,8 @@
 }
 
 html {
-  overflow-x: hidden;
   font-size: 62.5%;
+  overflow: hidden;
 }
 
 body {
@@ -318,6 +318,7 @@ textarea:focus + .label-textarea::after {
 
 /* Header */
 header {
+  overflow: hidden;
   height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -468,6 +469,7 @@ header .overlay {
 
 /* Footer */
 .footer-container {
+  height: 10vh;
   background-color: #333333;
   color: #fff;
 }
@@ -475,11 +477,11 @@ header .overlay {
 @media (max-width: 759px) {
   .footer-container {
     padding: 3rem 0;
+    height: 30vh;
   }
 }
 
 footer {
-  height: 10vh;
   font-size: 1.2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -498,6 +500,9 @@ footer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  footer .social {
+    font-size: 3rem;
   }
 }
 
