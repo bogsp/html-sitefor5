@@ -224,7 +224,7 @@ textarea:focus+.label-textarea::after {
 
 .lightbox {
     display: none;
-    height: 100%;
+    height: 100vh;
     width: 100vw;
     position: fixed;
     top: 0;
@@ -232,7 +232,10 @@ textarea:focus+.label-textarea::after {
     background-color: $dark;
     z-index: 5;
     img {
-        @include fix-hw;
+        position: absolute;
+        top: 50%;
+        margin-top: -35%;
+        width: 100vw;
         object-fit: contain;
     }
 }
