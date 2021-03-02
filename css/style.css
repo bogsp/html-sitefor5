@@ -296,12 +296,13 @@ textarea:focus + .label-textarea::after {
 .lightbox {
   display: none;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   opacity: .75;
   background-color: #333333;
   z-index: 5;
+  place-items: center center;
 }
 
 .lightbox img {

@@ -52,9 +52,7 @@ screenReady();
 // Lightbox
 var elem = document.createElement("img");
 const lightbox = document.querySelector('.lightbox');
-lightbox.addEventListener('click', () => {
-    fadeOut(lightbox);
-});
+
 const galleryLinks = [];
 
 const showLightbox = (src) => {
@@ -64,6 +62,12 @@ const showLightbox = (src) => {
 }
 
 const getGalleryItems = () => {
+    if (lightbox) {
+        lightbox.addEventListener('click', () => {
+            fadeOut(lightbox);
+        });
+    }
+
     document.querySelectorAll('.gallery-img img').forEach(element => {
 
         galleryLinks.push(element.src);

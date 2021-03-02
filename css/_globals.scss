@@ -224,7 +224,8 @@ textarea:focus+.label-textarea::after {
 
 .lightbox {
     display: none;
-    @include fix-hw;
+    height: 100%;
+    width: 100vw;
     position: fixed;
     top: 0;
     opacity: .75;
