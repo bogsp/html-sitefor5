@@ -494,18 +494,6 @@ footer {
           align-items: center;
 }
 
-@media (max-width: 759px) {
-  footer {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  footer .social {
-    font-size: 3rem;
-  }
-}
-
 footer .copyright p {
   padding: 0;
   margin: 0;
@@ -517,6 +505,15 @@ footer .social a {
 
 footer .social a:not(:last-child) {
   margin-right: 1rem;
+}
+
+@media (max-width: 759px) {
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 /* Home Page */

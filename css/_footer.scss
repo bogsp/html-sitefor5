@@ -14,12 +14,6 @@ footer {
     @include flex;
     @include flex-jc-sb;
     @include flex-ai-c;
-    @include breakpoint-down("sm") {
-        @include flex-col;
-        .social {
-            font-size: 3rem;
-        }
-    }
     .copyright p {
         @include noSpace;
     }
@@ -30,5 +24,8 @@ footer {
                 margin-right: 1rem;
             }
         }
+    }
+    @include breakpoint-down("sm") {
+        @include flex-col;
     }
 }
