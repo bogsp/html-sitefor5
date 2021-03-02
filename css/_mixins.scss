@@ -18,6 +18,14 @@
     }
 }
 
+@mixin type-col-gap($col, $gap) {
+    @include type-col($col);
+    column-gap: $gap;
+    @include breakpoint-down("md") {
+        column-gap: $sm;
+    }
+}
+
 // Theme Colors
 // Backgrounds
 @mixin bg-primary {

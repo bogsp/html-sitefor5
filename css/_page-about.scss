@@ -4,7 +4,7 @@
         @include grid-2;
         gap: $lg;
         .about-content {
-            @include type-col(2);
+            @include type-col-gap(2, $md);
         }
         .about-profile {
             height: 100%;
