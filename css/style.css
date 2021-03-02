@@ -78,7 +78,24 @@ section {
 
 @media (max-width: 1023px) {
   .form-container form {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+  }
+}
+
+@media (max-width: 1023px) and (max-width: 759px) {
+  .form-container form {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .form-container form .col-s2 {
+    grid-column: span 1;
   }
 }
 
@@ -112,6 +129,14 @@ input[type=submit] {
 
 input[type=submit]:hover {
   opacity: .75;
+}
+
+@media (max-width: 1023px) {
+  input[type=submit] {
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+  }
 }
 
 input[type=text]:focus + .label-text .input-content,

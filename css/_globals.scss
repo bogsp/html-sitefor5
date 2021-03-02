@@ -62,7 +62,11 @@ section {
             @include grid-col-span(2);
         }
         @include breakpoint-down("md") {
+            @include grid-col(1);
             gap: $sm;
+            .col-s2 {
+                @include grid-col-span(1);
+            }
         }
     }
 }
@@ -88,6 +92,10 @@ input[type=submit] {
     transition: opacity $transition ease-in-out;
     &:hover {
         opacity: .75;
+    }
+    @include breakpoint-down("md") {
+        @include fix-hw;
+        margin-top: $sm;
     }
 }
 
