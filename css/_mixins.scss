@@ -174,6 +174,12 @@
     align-items: center;
 }
 
+@mixin nav-mobile {
+    @include flex-col;
+    @include flex-jc-sa;
+    @include flex-ai-c;
+}
+
 // Breakpoints
 @mixin breakpoint-up ($size) {
     @media (min-width: map-get($breakpointsUp, $size)) {

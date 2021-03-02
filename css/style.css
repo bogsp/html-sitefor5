@@ -338,10 +338,10 @@ header .hamburger span:not(:last-child) {
   margin-bottom: .5rem;
 }
 
-@media (max-width: 759px) {
-  header .nav-links {
-    display: none;
-  }
+header .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .nav-links a {
@@ -350,6 +350,94 @@ header .nav-links a {
 
 header .nav-links a:not(:last-child) {
   margin-right: 2rem;
+}
+
+@media (max-width: 759px) {
+  header .nav-links {
+    height: 50%;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    top: 10vh;
+    z-index: 3;
+  }
+  header .nav-links a {
+    font-size: 3rem;
+    color: #fff;
+  }
+}
+
+header .overlay {
+  display: none;
+}
+
+@media (max-width: 759px) {
+  header .overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: #808080;
+    position: absolute;
+    top: 10vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.open .hamburger span:first-child {
+  -webkit-transform: translate(0, 0.5rem) rotate(45deg);
+          transform: translate(0, 0.5rem) rotate(45deg);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.open .hamburger span:nth-child(2) {
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
+.open .hamburger span:last-child {
+  -webkit-transform: translate(0, -1rem) rotate(-45deg);
+          transform: translate(0, -1rem) rotate(-45deg);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.closed .hamburger span:first-child {
+  -webkit-transform: translate(0, 0) rotate(0deg);
+          transform: translate(0, 0) rotate(0deg);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.closed .hamburger span:nth-child(2) {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+}
+
+.closed .hamburger span:last-child {
+  -webkit-transform: translate(0, 0) rotate(0deg);
+          transform: translate(0, 0) rotate(0deg);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
 /* Footer */

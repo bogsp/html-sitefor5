@@ -1,43 +1,99 @@
-/* Header */
-
-header {
-    height: 10vh;
-    @include flex;
-    @include flex-jc-sb;
-    @include flex-ai-c;
-    .logo img {
-        width: 30%;
-    }
-    .logo h1,
-    .logo h2 {
-        @include noSpace;
-        text-transform: uppercase;
-        font-weight: 300;
-    }
-    .hamburger {
-        cursor: pointer;
-        @include breakpoint-up("md") {
-            display: none;
-        }
-        span {
-            width: 3rem;
-            height: .2rem;
-            display: block;
-            @include bg-primary;
-        }
-    }
-    .hamburger span:not(:last-child) {
-        margin-bottom: .5rem;
-    }
-    .nav-links {
-        @include breakpoint-down("sm") {
-            display: none;
-        }
-        a {
-            font-size: 1.4rem;
-            &:not(:last-child) {
-                margin-right: 2rem;
+        /* Header */
+        
+        header {
+            height: 10vh;
+            @include flex;
+            @include flex-jc-sb;
+            @include flex-ai-c;
+            .logo img {
+                width: 30%;
+            }
+            .logo h1,
+            .logo h2 {
+                @include noSpace;
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+            .hamburger {
+                cursor: pointer;
+                @include breakpoint-up("md") {
+                    display: none;
+                }
+                span {
+                    width: 3rem;
+                    height: .2rem;
+                    display: block;
+                    @include bg-primary;
+                    &:not(:last-child) {
+                        margin-bottom: .5rem;
+                    }
+                }
+            }
+            .nav-links {
+                @include flex;
+                a {
+                    font-size: 1.4rem;
+                    &:not(:last-child) {
+                        margin-right: 2rem;
+                    }
+                }
+                @include breakpoint-down("sm") {
+                    height: 50%;
+                    width: 100%;
+                    @include nav-mobile;
+                    position: absolute;
+                    top: 10vh;
+                    z-index: 3;
+                    a {
+                        font-size: 3rem;
+                        color: $light;
+                    }
+                }
+            }
+            .overlay {
+                display: none;
+                @include breakpoint-down("sm") {
+                    display: block;
+                    @include fix-hw;
+                    background-color: $primary;
+                    position: absolute;
+                    top: 10vh;
+                    z-index: 0;
+                    pointer-events: none;
+                }
             }
         }
-    }
-}
+        
+        .open {
+            .hamburger {
+                span:first-child {
+                    transform: translate(0, .5rem) rotate(45deg);
+                    transition: transform $transition ease-in-out;
+                }
+                span:nth-child(2) {
+                    opacity: 0;
+                    transition: opacity $transition ease-in-out;
+                }
+                span:last-child {
+                    transform: translate(0, -1rem) rotate(-45deg);
+                    transition: transform $transition ease-in-out;
+                }
+            }
+        }
+        
+        .closed {
+            .hamburger {
+                span:first-child {
+                    transform: translate(0, 0) rotate(0deg);
+                    transition: transform $transition ease-in-out;
+                }
+                span:nth-child(2) {
+                    opacity: 1;
+                    transition: opacity $transition ease-in-out;
+                }
+                span:last-child {
+                    transform: translate(0, 0) rotate(0deg);
+                    transition: transform $transition ease-in-out;
+                }
+            }
+        }
