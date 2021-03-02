@@ -31,6 +31,7 @@
             }
             .nav-links {
                 @include flex;
+                position: relative;
                 a {
                     font-size: 1.4rem;
                     &:not(:last-child) {
