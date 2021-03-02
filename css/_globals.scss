@@ -50,6 +50,13 @@ p {
     margin-bottom: $md;
 }
 
+ul {
+    margin-top: -1rem;
+    li {
+        margin: 0 $lg;
+    }
+}
+
 img {
     width: 100%;
     object-fit: cover;
