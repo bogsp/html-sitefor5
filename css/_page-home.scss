@@ -26,6 +26,10 @@
     @include bg-highlight;
     .grid-content {
         text-align: center;
+        p {
+            width: 60%;
+            margin: auto;
+        }
     }
     .blurb-container {
         gap: $md;
