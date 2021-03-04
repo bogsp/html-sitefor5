@@ -632,6 +632,11 @@ footer .social a:not(:last-child) {
   text-align: center;
 }
 
+#blurbs .grid-content h1,
+#blurbs .grid-content p {
+  padding-bottom: 3rem;
+}
+
 #blurbs .grid-content p {
   width: 80%;
   margin: auto;
@@ -673,6 +678,7 @@ footer .social a:not(:last-child) {
 
 #gallery .grid-content {
   text-align: center;
+  padding-bottom: 3rem;
 }
 
 #gallery .gallery-container {
@@ -738,6 +744,10 @@ footer .social a:not(:last-child) {
   text-align: center;
 }
 
+#pricing .grid-content h1 {
+  padding-bottom: 3rem;
+}
+
 #pricing .grid-content .blurb-container {
   gap: 3rem;
 }
@@ -767,6 +777,10 @@ footer .social a:not(:last-child) {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
+}
+
+#about .grid-content h1 {
+  padding-bottom: 3rem;
 }
 
 #about .grid-content .about-content {

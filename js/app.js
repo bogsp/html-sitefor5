@@ -62,7 +62,7 @@ if (screen.width <= 425) {
         }
     });
 } else {
-    gsap.to(navLinks, { opacity: 1, duration: 0 });
+    fadeIn(navLinksContainer, 1, 0, 'flex');
 }
 
 // gallery Section
