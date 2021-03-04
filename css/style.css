@@ -637,7 +637,7 @@ footer .social a:not(:last-child) {
 }
 
 #blurbs .grid-content p {
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 
@@ -827,6 +827,10 @@ footer .social a:not(:last-child) {
   #contact .grid-content .info-container {
     text-align: center;
   }
+}
+
+#contact .grid-content .card {
+  padding: 5rem;
 }
 
 /* Custom Styles*/

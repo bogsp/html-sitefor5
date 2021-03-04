@@ -63,7 +63,6 @@ if (screen.width <= 425) {
     });
 } else {
     gsap.to(navLinks, { opacity: 1, duration: 0 });
-    gsap.from(header, { y: -150, duration: durationFast, delay: .5 })
 }
 
 // gallery Section
