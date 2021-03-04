@@ -1,13 +1,21 @@
-// Animations
-const fadeIn = (element, visibility = 1) => {
-    element.style.display = 'block';
-    gsap.fromTo(element, { opacity: 0 }, { opacity: visibility, duration: .3 });
+// Variables
+var staggerFrom = 'center';
+if (screen.width <= 425) {
+    staggerFrom = 'start';
+}
+// Durations
+const durationFast = .5;
+
+// Utilities Animations
+const fadeIn = (element, visibility = 1, display = 'block') => {
+    element.style.display = display;
+    gsap.fromTo(element, { opacity: 0 }, { opacity: visibility, duration: durationFast });
 }
 
-const fadeOut = (element, visibility = 1) => {
+const fadeOut = (element, visibility = 1, display = 'block') => {
     gsap.fromTo(element, { opacity: visibility }, {
         opacity: 0,
-        duration: .3,
+        duration: durationFast,
         onComplete: () => {
             element.style.display = 'none';
         }
@@ -16,66 +24,71 @@ const fadeOut = (element, visibility = 1) => {
 
 // Mobile Menu
 const header = document.querySelector('header');
-header.classList.add('closed');
+const logo = header.querySelectorAll('.logo');
 
-const hamburger = document.querySelector('.hamburger');
+const hamburger = header.querySelector('.hamburger');
+hamburger.classList.add('closed');
 
-const openMobileNav = gsap.timeline({ paused: true });
+const navLinksContainer = header.querySelector('.nav-links');
+const navLinks = navLinksContainer.children;
+gsap.to(navLinks, { opacity: 0, duration: 0 });
 
-const closeMobileNav = gsap.timeline({ paused: true });
+const overlay = header.querySelector('.overlay');
+gsap.to(overlay, { x: 100, opacity: 0, duration: 0 });
 
-function screenReady() {
-    if (screen.width <= 425) {
-        openMobileNav
-            .from('.overlay', .5, { x: 250, opacity: 0 })
-            .from('.nav-links a', .5, { x: 100, opacity: 0, stagger: .1 }, "-= .2");
-        closeMobileNav
-            .to('.overlay', .8, { x: 250, opacity: 0 })
-            .to('.nav-links a', .3, { x: 100, stagger: .1 }, "-= .2")
-            .to('.nav-links a', .2, { opacity: 0 }, "-= .5");
-        hamburger.addEventListener('click', () => {
-            if (header.classList.contains('closed') && !header.classList.contains('open')) {
-                openMobileNav.restart();
-                header.classList.add('open');
-                header.classList.remove('closed')
-            } else {
-                closeMobileNav.restart();
-                header.classList.remove('open')
-                header.classList.add('closed');
-            }
-        })
-    }
+const openMobileNav = () => {
+    gsap.to(overlay, { x: 0, opacity: 1, duration: .3 })
+    gsap.to(navLinks, { x: 0, opacity: 1, stagger: .1, duration: .2 });
 }
 
-screenReady();
-
-// Lightbox
-var elem = document.createElement("img");
-const lightbox = document.querySelector('.lightbox');
-
-const galleryLinks = [];
-
-const showLightbox = (src) => {
-    fadeIn(lightbox);
-    lightbox.appendChild(elem);
-    elem.src = src;
+const closeMobileNav = () => {
+    gsap.to(navLinks, { x: '500%', opacity: 0, duration: .5, stagger: 0 })
+    gsap.to(overlay, { x: '100%', opacity: 0, duration: durationFast });
 }
 
-const getGalleryItems = () => {
-    if (lightbox) {
-        lightbox.addEventListener('click', () => {
-            fadeOut(lightbox);
-        });
+if (screen.width <= 425) {
+
+    hamburger.addEventListener('click', () => {
+        if (hamburger.classList.contains('closed') && !hamburger.classList.contains('open')) {
+            hamburger.classList.add('open');
+            hamburger.classList.remove('closed');
+            openMobileNav();
+            navLinksContainer.style.pointerEvents = 'all';
+        } else {
+            hamburger.classList.remove('open');
+            hamburger.classList.add('closed');
+            closeMobileNav();
+            navLinksContainer.style.pointerEvents = 'none';
+        }
+    });
+} else {
+    gsap.to(navLinks, { opacity: 1, duration: 0 });
+    gsap.from(header, { y: -150, duration: durationFast, delay: .5 })
+}
+
+// gallery Section
+const galleryContainer = document.querySelector('#gallery');
+if (galleryContainer) {
+    const gallery = galleryContainer.querySelectorAll('.gallery-container .gallery-img');
+
+    // Lightbox
+    var elem = document.createElement("img");
+    const lightbox = document.querySelector('.lightbox');
+
+    const showLightbox = (src) => {
+        fadeIn(lightbox);
+        lightbox.appendChild(elem);
+        elem.src = src;
     }
 
-    document.querySelectorAll('.gallery-img img').forEach(element => {
+    lightbox.addEventListener('click', () => {
+        fadeOut(lightbox);
+    });
 
-        galleryLinks.push(element.src);
+    gallery.forEach(element => {
 
         element.addEventListener('click', () => {
-            showLightbox(element.src);
+            showLightbox(element.querySelector('img').src);
         })
     });
 }
-
-getGalleryItems();

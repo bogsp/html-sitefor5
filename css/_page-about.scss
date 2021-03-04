@@ -1,6 +1,5 @@
 #about {
     .grid-content {
-        min-height: 64.8vh;
         @include grid-2;
         gap: $lg;
         .about-content {

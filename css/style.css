@@ -71,7 +71,7 @@ img {
 }
 
 section {
-  padding: 5rem 0;
+  padding: 10rem 0;
 }
 
 .special {
@@ -370,6 +370,20 @@ textarea:focus + .label-textarea::after {
 }
 
 /* Header */
+.header-container {
+  width: 100%;
+  position: absolute;
+  background-color: transparent;
+  z-index: 10;
+}
+
+@media (max-width: 759px) {
+  .header-container {
+    height: 100%;
+    width: 100%;
+  }
+}
+
 header {
   height: 10vh;
   display: -webkit-box;
@@ -433,8 +447,8 @@ header .nav-links a:not(:last-child) {
 
 @media (max-width: 759px) {
   header .nav-links {
-    height: 50%;
-    width: 90%;
+    height: 60vh;
+    width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -469,13 +483,13 @@ header .overlay {
 @media (max-width: 759px) {
   header .overlay {
     display: block;
-    height: 90%;
-    width: 90%;
-    z-index: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
   }
 }
 
-.open .hamburger span:first-child {
+.open span:first-child {
   -webkit-transform: translate(0, 0.5rem) rotate(45deg);
           transform: translate(0, 0.5rem) rotate(45deg);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -484,13 +498,13 @@ header .overlay {
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-.open .hamburger span:nth-child(2) {
+.open span:nth-child(2) {
   opacity: 0;
   -webkit-transition: opacity 300ms ease-in-out;
   transition: opacity 300ms ease-in-out;
 }
 
-.open .hamburger span:last-child {
+.open span:last-child {
   -webkit-transform: translate(0, -1rem) rotate(-45deg);
           transform: translate(0, -1rem) rotate(-45deg);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -499,7 +513,7 @@ header .overlay {
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-.closed .hamburger span:first-child {
+.closed span:first-child {
   -webkit-transform: translate(0, 0) rotate(0deg);
           transform: translate(0, 0) rotate(0deg);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -508,13 +522,13 @@ header .overlay {
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-.closed .hamburger span:nth-child(2) {
+.closed span:nth-child(2) {
   opacity: 1;
   -webkit-transition: opacity 300ms ease-in-out;
   transition: opacity 300ms ease-in-out;
 }
 
-.closed .hamburger span:last-child {
+.closed span:last-child {
   -webkit-transform: translate(0, 0) rotate(0deg);
           transform: translate(0, 0) rotate(0deg);
   -webkit-transition: -webkit-transform 300ms ease-in-out;
@@ -580,7 +594,7 @@ footer .social a:not(:last-child) {
 
 /* Home Page */
 #hero {
-  height: 90vh;
+  height: 100vh;
   max-height: 1080px;
   width: 100%;
   text-align: center;
@@ -620,6 +634,11 @@ footer .social a:not(:last-child) {
 
 #blurbs .grid-content {
   text-align: center;
+}
+
+#blurbs .grid-content p {
+  width: 60%;
+  margin: auto;
 }
 
 #blurbs .blurb-container {
@@ -740,7 +759,6 @@ footer .social a:not(:last-child) {
 }
 
 #about .grid-content {
-  min-height: 64.8vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 2fr 1fr;
@@ -787,7 +805,6 @@ footer .social a:not(:last-child) {
 }
 
 #contact .grid-content {
-  min-height: 64.8vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr;
@@ -804,6 +821,12 @@ footer .social a:not(:last-child) {
 
 #contact .grid-content .info-container h2 {
   padding: 1rem 0 3rem;
+}
+
+@media (max-width: 759px) {
+  #contact .grid-content .info-container {
+    text-align: center;
+  }
 }
 
 /* Custom Styles*/

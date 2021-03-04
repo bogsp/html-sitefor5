@@ -1,5 +1,15 @@
 /* Header */
 
+.header-container {
+    width: 100%;
+    position: absolute;
+    @include bg-transparent;
+    z-index: 10;
+    @include breakpoint-down("sm") {
+        @include fix-hw;
+    }
+}
+
 header {
     height: 10vh;
     @include flex;
@@ -39,8 +49,8 @@ header {
             }
         }
         @include breakpoint-down("sm") {
-            height: 50%;
-            width: 90%;
+            height: 60vh;
+            width: 100%;
             @include nav-mobile;
             position: absolute;
             top: 10vh;
@@ -62,43 +72,39 @@ header {
         pointer-events: none;
         @include breakpoint-down("sm") {
             display: block;
-            height: 90%;
-            width: 90%;
-            z-index: 0;
+            height: 100vh;
+            width: 100%;
+            z-index: 2;
         }
     }
 }
 
 .open {
-    .hamburger {
-        span:first-child {
-            transform: translate(0, .5rem) rotate(45deg);
-            transition: transform $transition ease-in-out;
-        }
-        span:nth-child(2) {
-            opacity: 0;
-            transition: opacity $transition ease-in-out;
-        }
-        span:last-child {
-            transform: translate(0, -1rem) rotate(-45deg);
-            transition: transform $transition ease-in-out;
-        }
+    span:first-child {
+        transform: translate(0, .5rem) rotate(45deg);
+        transition: transform $transition ease-in-out;
+    }
+    span:nth-child(2) {
+        opacity: 0;
+        transition: opacity $transition ease-in-out;
+    }
+    span:last-child {
+        transform: translate(0, -1rem) rotate(-45deg);
+        transition: transform $transition ease-in-out;
     }
 }
 
 .closed {
-    .hamburger {
-        span:first-child {
-            transform: translate(0, 0) rotate(0deg);
-            transition: transform $transition ease-in-out;
-        }
-        span:nth-child(2) {
-            opacity: 1;
-            transition: opacity $transition ease-in-out;
-        }
-        span:last-child {
-            transform: translate(0, 0) rotate(0deg);
-            transition: transform $transition ease-in-out;
-        }
+    span:first-child {
+        transform: translate(0, 0) rotate(0deg);
+        transition: transform $transition ease-in-out;
+    }
+    span:nth-child(2) {
+        opacity: 1;
+        transition: opacity $transition ease-in-out;
+    }
+    span:last-child {
+        transform: translate(0, 0) rotate(0deg);
+        transition: transform $transition ease-in-out;
     }
 }
