@@ -1,110 +1,129 @@
-/* Header */
-
-.header-container {
-    width: 100%;
-    position: absolute;
-    @include bg-transparent;
-    z-index: 10;
-}
-
 header {
     height: 10vh;
-    @include flex;
-    @include flex-jc-sb;
-    @include flex-ai-c;
-    .logo img {
-        width: 30%;
-    }
-    .logo h1,
-    .logo h2 {
-        @include noSpace;
-        text-transform: uppercase;
-        font-weight: 300;
-    }
-    .hamburger {
-        cursor: pointer;
-        @include breakpoint-up("md") {
-            display: none;
-        }
-        span {
-            width: 3rem;
-            height: .2rem;
-            display: block;
-            @include bg-primary;
-            &:not(:last-child) {
-                margin-bottom: .5rem;
-            }
-        }
-    }
-    .nav-links {
+    position: relative;
+    margin-bottom: -10vh;
+    @include bg-transparent;
+    @extend %grid-main;
+    .navbar {
         @include flex;
-        position: relative;
-        a {
-            font-size: 1.4rem;
-            &:not(:last-child) {
-                margin-right: 2rem;
+        @include flex-jc-sb;
+        @include flex-ai-c;
+        .logo img {
+            width: 30%;
+        }
+        .logo {
+            h1,
+            h2,
+            h3 {
+                @include no-space;
+                text-transform: uppercase;
+                font-weight: 300;
+                @include color('primary');
             }
         }
-        @include breakpoint-down("sm") {
-            height: 60vh;
-            width: 100%;
-            @include nav-mobile;
-            position: absolute;
-            top: 10vh;
-            right: 0;
+        .hamburger {
+            cursor: pointer;
             z-index: 3;
-            a {
-                font-size: 2rem;
-                color: $light;
+            span {
+                width: 3rem;
+                height: .2rem;
+                display: block;
                 &:not(:last-child) {
-                    margin: 0;
+                    margin-bottom: .5rem;
                 }
             }
         }
-    }
-    .overlay {
-        display: none;
-        @include fix-hw;
-        position: absolute;
-        top: 10vh;
-        right: 0;
-        background-color: $primary;
-        pointer-events: none;
-        @include breakpoint-down("sm") {
-            display: block;
-            height: 100vh;
-            width: 100%;
+        .nav-links {
+            height: 60vh;
+            @include fix-w;
+            position: absolute;
+            top: 10vh;
+            left: 0;
+            @include flex;
+            @include flex-col;
+            @include flex-jc-sa;
+            @include flex-ai-c;
+            a {
+                font-size: size(lg);
+                @include color('light');
+            }
             z-index: 2;
+        }
+        .overlay {
+            height: 100vh;
+            @include fix-w;
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include color('primary', true);
+            pointer-events: none;
+            z-index: 1;
+        }
+    }
+    @include min-screen(xxl) {
+        height: 8rem;
+    }
+    @include min-screen(md) {
+        height: 8vh;
+        .navbar {
+            @include fix-hw;
+            @include flex-jc-sb;
+            @include flex-ai-c;
+            .nav-links {
+                position: relative;
+                top: 0;
+                @include fix-h;
+                width: auto;
+                @include flex-row;
+                @include no-space;
+                a {
+                    font-size: font(sm);
+                    @include color('primary');
+                    &:not(:last-child) {
+                        margin-right: size(lg);
+                    }
+                }
+            }
+            .hamburger,
+            .overlay {
+                display: none;
+            }
         }
     }
 }
 
 .open {
     span:first-child {
+        @include color('light', true);
         transform: translate(0, .5rem) rotate(45deg);
-        transition: transform $transition ease-in-out;
+        transition: all $transition ease-in-out;
     }
     span:nth-child(2) {
+        @include color('light', true);
         opacity: 0;
         transition: opacity $transition ease-in-out;
     }
     span:last-child {
+        @include color('light', true);
         transform: translate(0, -1rem) rotate(-45deg);
-        transition: transform $transition ease-in-out;
+        transition: all $transition ease-in-out;
     }
 }
 
 .closed {
     span:first-child {
+        @include color('primary', true);
         transform: translate(0, 0) rotate(0deg);
-        transition: transform $transition ease-in-out;
+        transition: all $transition ease-in-out;
     }
     span:nth-child(2) {
+        @include color('primary', true);
         opacity: 1;
         transition: opacity $transition ease-in-out;
     }
     span:last-child {
+        @include color('primary', true);
         transform: translate(0, 0) rotate(0deg);
-        transition: transform $transition ease-in-out;
+        transition: all $transition ease-in-out;
     }
 }

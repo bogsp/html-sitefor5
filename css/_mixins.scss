@@ -1,168 +1,168 @@
+// Breakpoints
+@mixin min-screen ($size: md) {
+    @media (min-width: breakpoint($size)) {
+        @content;
+    }
+}
+
+@mixin max-screen ($size: md) {
+    @media (max-width: breakpoint-max($size)) {
+        @content;
+    }
+}
+
 // Utils
-@mixin noSpace {
-    padding: 0;
+@mixin no-margin {
     margin: 0;
 }
 
-@mixin fix-hw {
+@mixin no-padding {
+    padding: 0;
+}
+
+@mixin no-space {
+    @include no-padding;
+    @include no-margin;
+}
+
+@mixin fix-h {
     height: 100%;
+}
+
+@mixin fix-w {
     width: 100%;
+}
+
+@mixin fix-hw {
+    @include fix-h;
+    @include fix-w;
 }
 
 // Typography
 // Font sizes 
-@mixin clamp-size($size: 'default') {
-    font-size: clamp(map-get($clampMin, $size), map-get($clamp, $size), map-get($clampMax, $size));
-}
-
-@mixin clamp-font($size, $min, $max) {
-    font-size: clamp($min, $size, $max);
-}
-
 // Paragraph Columns
-@mixin type-col($col) {
-    column-count: $col;
-    @include breakpoint-down("md") {
-        column-count: 1;
-    }
-}
-
-@mixin type-col-gap($col, $gap) {
-    @include type-col($col);
-    column-gap: $gap;
-    @include breakpoint-down("md") {
-        column-gap: $sm;
+@mixin type-col($col, $gap: md) {
+    column-count: 1;
+    @include min-screen() {
+        column-count: $col;
+        column-gap: size($gap);
     }
 }
 
 // Theme Colors
+@mixin color($color: 'primary', $bg: false) {
+    @if ($bg) {
+        background-color: get-color($color);
+    }
+    @else {
+        color: get-color($color);
+    }
+}
+
 // Backgrounds
-@mixin bg-primary {
-    background-color: $primary;
-}
-
-@mixin bg-secondary {
-    background-color: $secondary;
-}
-
-@mixin bg-highlight {
-    background-color: $highlight;
-}
-
-@mixin bg-light {
-    background-color: $light;
-}
-
 @mixin bg-dark {
-    background-color: $dark;
-    color: $light;
-}
-
-@mixin bg-success {
-    background-color: $success;
-}
-
-@mixin bg-error {
-    background-color: $error;
-}
-
-@mixin bg-warning {
-    background-color: $warning;
+    @include color('dark', true);
+    @include color('light');
 }
 
 @mixin bg-transparent {
     background-color: transparent;
 }
 
-// Text Colors
-@mixin primary {
-    color: $primary;
-}
-
-@mixin secondary {
-    color: $secondary;
-}
-
-@mixin highlight {
-    color: $highlight;
-}
-
-@mixin light {
-    color: $light;
-}
-
-@mixin dark {
-    color: $dark;
-}
-
-@mixin success {
-    color: $success;
-}
-
-@mixin error {
-    color: $error;
-}
-
-@mixin warning {
-    color: $warning;
-}
-
 // Elements
-@mixin btn ($color, $border: false, $text: $light) {
+// Buttons
+@mixin btn ($color, $border: false, $text: 'light') {
     display: inline-block;
     padding: 1rem 2rem;
     @if $border {
-        color: $color;
-        background-color: transparent;
-        border: 2px $color solid;
+        @include color($color);
+        @include bg-transparent;
+        border: 2px solid;
+        border-color: get-color($color);
         transition: all $transition ease-in-out;
         &:hover {
-            background-color: $color;
-            color: $text;
+            @include color($color, true);
+            @include color($text);
         }
     }
     @else {
-        background-color: $color;
-        color: $text;
+        background-color: get-color($color);
+        color: get-color($text);
     }
 }
 
 @mixin btnRadius($radius) {
-    border-radius: map-get($map: $btnRadius, $key: $radius);
+    border-radius: size($radius);
 }
 
-// Layout
+// Form
+@mixin input-defaults {
+    @include fix-hw;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+@mixin input-transform {
+    transform: translateY(-100%);
+    font-size: font(sm);
+    @include color('primary');
+}
+
+@mixin label-defaults {
+    @include fix-hw;
+    position: absolute;
+    font-size: font(sm);
+    pointer-events: none;
+}
+
+@mixin label-after {
+    position: absolute;
+    content: "";
+    @include fix-hw;
+    border-bottom: 1px solid get-color('primary');
+    transform: translateX(-100%);
+    transition: all $transition ease;
+}
+
+// Layouts
 // Grid
 @mixin grid {
     display: grid;
 }
 
+// Columns '2', '3', '4', '5', '6'
+@mixin grid-auto($size) {
+    @include grid;
+    @include max-screen(xxl) {
+        grid-template-columns: repeat(auto-fit, minmax(grid-col($size, true), 1fr));
+    }
+    @include min-screen(sm) {
+        grid-template-columns: 1fr;
+    }
+    @include min-screen() {
+        grid-template-columns: repeat(auto-fit, minmax(grid-col($size), 1fr));
+    }
+}
+
 @mixin grid-col($repeat) {
     @include grid;
-    grid-template-columns: repeat($repeat, 1fr);
-    @include breakpoint-down("sm") {
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
+    @include min-screen() {
+        grid-template-columns: repeat($repeat, 1fr);
     }
 }
 
 @mixin grid-2($left: true) {
     @include grid;
-    @if $left {
-        grid-template-columns: 2fr 1fr;
-    }
-    @else {
-        grid-template-columns: 1fr 2fr;
-    }
-    @include breakpoint-down("sm") {
-        grid-template-columns: 1fr;
-    }
-}
-
-@mixin grid-auto($size) {
-    @include grid;
-    grid-template-columns: repeat(auto-fit, minmax(map-get($grid-col, $size), 1fr));
-    @include breakpoint-up("xxl") {
-        grid-template-columns: repeat(auto-fit, minmax(map-get($grid-col-xxl, $size), 1fr));
+    grid-template-columns: 1fr;
+    @include min-screen() {
+        @if $left {
+            grid-template-columns: 2fr 1fr;
+        }
+        @else {
+            grid-template-columns: 1fr 2fr;
+        }
     }
 }
 
@@ -177,6 +177,10 @@
 // Flexbox
 @mixin flex {
     display: flex;
+}
+
+@mixin flex-row {
+    flex-direction: row;
 }
 
 @mixin flex-col {
@@ -199,22 +203,13 @@
     align-items: center;
 }
 
-@mixin nav-mobile {
-    @include flex-col;
-    @include flex-jc-sa;
-    @include flex-ai-c;
-}
-
-// Breakpoints
-@mixin breakpoint-up ($size) {
-    @media (min-width: map-get($breakpointsUp, $size)) {
-        @content;
-    }
-}
-
-@mixin breakpoint-down ($size) {
-    @media (max-width: map-get($breakpointsDown, $size)) {
-        @content;
+@mixin navbar {
+    @include flex;
+    @include flex-jc-sb;
+    @include min-screen() {
+        @include flex-col;
+        @include flex-jc-sa;
+        @include flex-ai-c;
     }
 }
 
@@ -225,55 +220,4 @@
 
 @mixin shadow-high {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-// Slider
-@mixin slider {
-    height: 90vh;
-    @include bg-dark;
-    padding: 0;
-    .slider-container {
-        @include grid;
-        position: relative;
-        height: 100vh;
-        .slide {
-            @include fix-hw;
-            position: absolute;
-            @include grid-center;
-            margin-top: -10vh;
-            padding: 15vh $lg 0;
-            .slide-copy,
-            img {
-                width: 80%;
-                margin: auto;
-            }
-            .slide-copy {
-                .slide-title,
-                .slide-subtitle,
-                .slide-content {
-                    padding: 0;
-                    margin: 1rem 0;
-                }
-                .cta-btn {
-                    @include btn($primary);
-                    margin-top: $sm;
-                }
-            }
-        }
-        .slider-nav {
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            padding-top: -50%;
-            .btn-dark {
-                @include clamp-size('xl');
-                @include btn($dark);
-                cursor: pointer;
-            }
-            .next-btn {
-                position: absolute;
-                right: 0;
-            }
-        }
-    }
 }

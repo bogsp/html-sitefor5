@@ -4,24 +4,25 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    @include noSpace();
+    @include no-space;
 }
 
 html {
-    font-size: $fontSize;
+    font-size: $rem;
     overflow-x: hidden;
 }
 
 body {
     font-family: $fontBody;
-    @include clamp-size;
+    font-size: font(lg);
     letter-spacing: $letterSpacing;
     overflow: hidden;
 }
 
 a {
+    font-size: font(md);
     text-decoration: none;
-    color: $primary;
+    @include color('primary');
     transition: opacity $transition ease-in-out;
     &:hover {
         opacity: .75;
@@ -30,30 +31,25 @@ a {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
     font-family: $fontHeading;
     letter-spacing: .5rem;
-    text-transform: uppercase;
-}
-
-h1 {
-    @include clamp-size('lg');
-    margin-bottom: $sm;
-}
-
-h2 {
-    @include clamp-size('md');
-    margin-bottom: $sm;
+    @include color('primary');
+    margin-bottom: size(sm);
 }
 
 p {
-    margin-bottom: $md;
+    font-size: font(md);
+    margin-bottom: size(md);
 }
 
 ul {
-    margin-top: -1rem;
     li {
-        margin: 0 $lg;
+        font-size: font(md);
+        margin: 0 size(lg);
     }
 }
 
@@ -63,11 +59,23 @@ img {
 }
 
 section {
-    padding: 10rem 0;
+    padding: size(lg) 0;
 }
 
 .special {
     font-family: $fontSpecial;
+}
+
+ul {
+    margin-top: -1rem;
+    li {
+        margin: 0 size(lg);
+    }
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
 }
 
 
@@ -76,90 +84,106 @@ section {
 .form-container {
     form {
         @include grid-col(2);
-        gap: $md;
+        gap: size(md);
+        padding-top: size(md);
         .col-s2 {
-            @include grid-col-span(2);
+            @include grid-col-span(1);
         }
-        @include breakpoint-down("md") {
-            @include grid-col(1);
-            gap: $sm;
+        @include min-screen(md) {
+            gap: size(sm);
             .col-s2 {
-                @include grid-col-span(1);
+                @include grid-col-span(2);
             }
         }
     }
 }
 
-textarea,
-input[type=text],
+input[type=text] {
+    padding-top: size(md);
+    @include input-defaults;
+    &:focus+.label-text .input-content,
+    &:valid+.label-text .input-content {
+        @include input-transform;
+    }
+    &:focus+.label-text::after,
+    &:valid+.label-text::after {
+        transform: translateX(0%);
+    }
+}
+
 input[type=email] {
-    padding-top: $md;
-    @include fix-hw;
-    outline: none;
-    border: none;
-    background: none;
+    padding-top: size(md);
+    @include input-defaults;
+    &:focus+.label-email .input-content,
+    &:valid+.label-email .input-content {
+        @include input-transform;
+    }
+    &:focus+.label-email::after,
+    &:valid+.label-email::after {
+        transform: translateX(0%);
+    }
+}
+
+textarea {
+    padding-top: size(lg);
+    @include input-defaults;
+    &:valid+.label-textarea .textarea-content,
+    &:focus+.label-textarea .textarea-content {
+        @include input-transform;
+    }
+    &:valid+.label-textarea::after,
+    &:focus+.label-textarea::after {
+        transform: translateX(0%);
+    }
 }
 
 input[type=submit] {
     outline: none;
     border: none;
-    width: fit-content;
-    @include clamp-size;
-    @include btn($primary);
-    @include btnRadius("lg");
+    @include fix-w;
+    font-size: font(sm);
+    margin: size(md) 0;
+    @include btn('primary');
+    @include btnRadius(lg);
     cursor: pointer;
     transition: opacity $transition ease-in-out;
     &:hover {
         opacity: .75;
     }
-    @include breakpoint-down("md") {
-        @include fix-hw;
-        margin-top: $sm;
+    @include min-screen(md) {
+        width: fit-content;
     }
 }
 
-input[type=text]:focus+.label-text .input-content,
-input[type=text]:valid+.label-text .input-content,
-input[type=email]:focus+.label-email .input-content,
-input[type=email]:valid+.label-email .input-content,
-textarea:valid+.label-textarea .textarea-content,
-textarea:focus+.label-textarea .textarea-content {
-    transform: translateY(-100%);
-    @include clamp-size('sm');
-    color: $primary;
-}
-
-input[type=text]:focus+.label-text::after,
-input[type=text]:valid+.label-text::after,
-input[type=email]:focus+.label-email::after,
-input[type=email]:valid+.label-email::after,
-textarea:valid+.label-textarea::after,
-textarea:focus+.label-textarea::after {
-    transform: translateX(0%);
-}
-
 .label-text,
-.label-textarea,
 .label-email {
-    @include fix-hw;
-    position: absolute;
-    bottom: 0;
+    @include label-defaults;
     left: 0;
-    pointer-events: none;
-    border-bottom: 1px solid $dark;
+    border-bottom: 1px solid get-color('dark');
+    &::after {
+        @include label-after;
+        left: 0;
+        bottom: -1px;
+    }
 }
 
-.label-text::after,
-.label-textarea::after,
-.label-email::after {
-    position: absolute;
-    content: "";
-    bottom: -1;
+.label-textarea {
+    @include label-defaults;
+    top: -50%;
     left: 0;
-    @include fix-hw;
-    border-bottom: 1px solid $primary;
-    transform: translateX(-100%);
-    transition: all $transition ease;
+    &::before {
+        content: '';
+        @include fix-hw;
+        position: absolute;
+        top: 50%;
+        bottom: 1;
+        border-bottom: 1px solid get-color('dark');
+    }
+    &::after {
+        @include label-after;
+        top: 50%;
+        bottom: 1px;
+    }
 }
 
 .input-content {
@@ -171,7 +195,7 @@ textarea:focus+.label-textarea::after {
 
 .textarea-content {
     position: absolute;
-    bottom: $lg;
+    bottom: size(lg);
     left: 0;
     transition: all $transition ease;
 }
@@ -185,12 +209,16 @@ textarea:focus+.label-textarea::after {
 /* Cards */
 
 .card {
-    padding: $lg $md;
-    border-radius: $md;
+    padding: size(lg);
+    border-radius: size(sm);
+    @include color('light', true);
     @include shadow;
-    @include breakpoint-down("md") {
-        padding: $lg $md;
-        border-radius: $sm;
+    @include min-screen(md) {
+        padding: size(lg) size(md);
+        border-radius: size(md);
+    }
+    @include min-screen(lg) {
+        padding: size(xl) size(lg);
     }
 }
 
@@ -200,23 +228,23 @@ textarea:focus+.label-textarea::after {
 .blurb-container {
     width: 100%;
     text-align: center;
-    padding: $md 0;
+    padding: size(md) 0;
     @include grid-col(3);
-    gap: $lg;
+    gap: size(lg);
     .blurb-icon {
-        color: $primary;
-        @include clamp-size($xl);
+        @include color('primary');
+        font-size: font(xl);
     }
     .blurb-title {
-        padding: $md 0 0 0;
-        @include clamp-size('md');
-        color: $primary;
+        padding: size(md) 0 0 0;
+        font-size: font(lg);
+        @include color('primary');
     }
     .blurb-content {
-        padding-bottom: $sm;
+        padding-bottom: size(sm);
     }
     .blurb-btn {
-        @include btn($primary);
+        @include btn('primary');
     }
 }
 
@@ -229,18 +257,25 @@ textarea:focus+.label-textarea::after {
     position: fixed;
     top: 0;
     opacity: .75;
-    background-color: $dark;
+    @include color('dark', true);
     z-index: 5;
     img {
         @include fix-hw;
         position: absolute;
         object-fit: contain;
     }
-    @include breakpoint-down("md") {
+    @include min-screen(md) {
         height: 100vh;
         width: 100vw;
         img {
             width: 100vw;
         }
     }
+}
+
+
+/* Layouts */
+
+.grid-main {
+    @extend %grid-main;
 }

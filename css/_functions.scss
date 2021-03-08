@@ -1,0 +1,31 @@
+@function breakpoint($size: md) {
+    @return map-get($breakpoints, $size) - 1;
+}
+
+@function breakpoint-max($size: md) {
+    @return map-get($breakpoints, $size);
+}
+
+// typography
+@function size($size: md) {
+    @return map-get($sizes, $size);
+}
+
+@function font($size: md) {
+    @return clamp(size($size), map-get($fontSizes, $size), size($size)*1.2);
+}
+
+// Color
+@function get-color($color) {
+    @return map-get($colors, $color);
+}
+
+// Grid columns
+@function grid-col($size, $xxl: false) {
+    @return if($xxl, map-get($grid-col-xxl, $size), map-get($grid-col, $size));
+}
+
+// Gutter
+@function gutter($size: md) {
+    @return map-get($gutter, $size);
+}

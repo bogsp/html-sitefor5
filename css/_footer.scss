@@ -1,39 +1,64 @@
-/* Footer */
-
-.footer-container {
-    height: 10vh;
-    @include bg-dark;
-    @include breakpoint-down("sm") {
-        padding: $md 0;
-        height: 25vh;
-    }
-}
-
 footer {
-    font-size: 1.2rem;
-    @include flex;
-    @include flex-jc-sb;
-    @include flex-ai-c;
-    .copyright p {
-        @include noSpace;
-    }
-    .social {
-        a {
-            font-size: 1.2rem;
-            &:not(:last-child) {
-                margin-right: 1rem;
+    height: 20vh;
+    @extend %grid-main;
+    @include color('dark', true);
+    padding: size(md) 0;
+    .grid-content {
+        @include flex;
+        @include flex-col;
+        @include flex-jc-sa;
+        @include flex-ai-c;
+        .copyright {
+            @include color('light');
+            p {
+                @include no-space;
+                font-size: font(sm);
             }
         }
-    }
-    @include breakpoint-down("sm") {
-        @include flex-col;
-        .social {
+        .links {
+            @include flex;
+            padding-top: size(sm);
             a {
-                font-size: 3rem;
+                @include no-space;
+                font-size: font(sm);
+                text-transform: uppercase;
+                @include color('light');
                 &:not(:last-child) {
-                    margin-right: 2rem;
+                    margin-right: size(md);
                 }
             }
         }
+        .social {
+            @include flex;
+            padding-top: size(sm);
+            a {
+                font-size: font(md);
+                @include color('light');
+                &:not(:last-child) {
+                    margin-right: size(md);
+                }
+            }
+        }
+    }
+    @include min-screen() {
+        height: 8vh;
+        .grid-content {
+            @include fix-hw;
+            @include flex-row;
+            @include flex-jc-sb;
+            @include flex-ai-c;
+            .links {
+                @include no-space;
+                @include flex-ai-c;
+            }
+            .social {
+                @include fix-h;
+                @include no-padding;
+                @include flex-ai-c;
+            }
+        }
+    }
+    @include min-screen(xxl) {
+        height: 8rem;
     }
 }

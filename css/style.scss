@@ -1,19 +1,12 @@
+// Fonts
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+// Imports
 @import './variables';
+@import './functions';
 @import './mixins';
 @import './globals';
-@import './layout';
 @import './header';
 @import './footer';
-@import './page-home';
-@import './page-about';
-@import './page-contact';
-
-/* Custom Styles*/
-
-
-/* About Pge*/
-
-
-/* Contact Pge*/
+@import './sections';
+@import './placeholders';

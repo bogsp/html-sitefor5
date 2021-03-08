@@ -1,0 +1,171 @@
+/* Sections */
+
+
+/* Hero */
+
+#hero {
+    height: 102vh;
+    max-height: 1080px;
+    @include fix-w;
+    text-align: center;
+    @include grid;
+    @include grid-center;
+    background: url('/images/hero.jpg') no-repeat center top;
+    background-size: cover;
+    p {
+        width: 60%;
+        font-size: size(md);
+        margin: size(md) auto;
+        @include min-screen(md) {
+            padding: size(md);
+        }
+    }
+    .cta-btn {
+        @include btn('dark',
+        true);
+        @include btnRadius("lg");
+    }
+}
+
+
+/* Blurbs*/
+
+#blurbs {
+    padding-top: size(xl);
+    @include color('highlight',
+    true);
+    .grid-content {
+        text-align: center;
+        h1,
+        p {
+            padding-bottom: size(md);
+        }
+        p {
+            width: 80%;
+            margin: auto;
+        }
+    }
+    .blurb-container {
+        gap: size(md);
+        .card {
+            overflow: hidden;
+            @include bg-dark;
+            @include no-space;
+            padding-bottom: size('lg');
+        }
+        .blurb-title {
+            padding: size('md') size('lg') size('sm');
+        }
+        .blurb-content {
+            padding: size('sm') size('lg');
+        }
+        .blurb-btn {
+            @include btn('primary');
+            @include btnRadius(lg);
+        }
+    }
+}
+
+
+/* Gallery */
+
+#gallery {
+    margin-top: size(md);
+    padding: size(xl) 0 0;
+    .grid-content {
+        text-align: center;
+        padding-bottom: size(md);
+    }
+    .gallery-container {
+        padding: size(md) 0 0;
+        width: 100%;
+        @include grid-auto('4');
+        img {
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+
+/* Pricing */
+
+#pricing {
+    .grid-content {
+        padding: size(xl) 0;
+        text-align: center;
+        h1 {
+            padding-bottom: size(md);
+        }
+        .blurb-container {
+            gap: size(md);
+            .card {
+                @include color('light',
+                true);
+            }
+            .blurb-btn {
+                @include btn('primary');
+                @include btnRadius(lg);
+            }
+        }
+    }
+}
+
+#text {
+    .grid-content {
+        .content {
+            @include type-col(3);
+        }
+    }
+}
+
+
+/* About */
+
+#about {
+    min-height: 84vh;
+    .grid-content {
+        padding: size(lg) 0;
+        @include grid-2;
+        gap: size(lg);
+        h1 {
+            padding-bottom: size(md);
+        }
+        .about-content {
+            @include type-col(2,
+            size(md));
+        }
+        .about-profile {
+            height: auto;
+            @include min-screen() {
+                height: 100%;
+            }
+        }
+    }
+}
+
+
+/* Contact */
+
+#contact {
+    min-height: 84vh;
+    .grid-content {
+        padding: size(lg) 0;
+        @include grid-2(false);
+        gap: size(lg);
+        .info-container {
+            text-align: center;
+            h2 {
+                padding: size(sm) 0 size(md);
+            }
+        }
+        @include min-screen() {
+            .info-container {
+                text-align: left;
+                h2 {
+                    padding: size(sm) 0 size(md);
+                }
+            }
+        }
+    }
+}

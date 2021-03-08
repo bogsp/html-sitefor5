@@ -1,8 +1,3 @@
-// Variables
-var staggerFrom = 'center';
-if (screen.width <= 425) {
-    staggerFrom = 'start';
-}
 // Durations
 const durationFast = .5;
 
@@ -24,7 +19,6 @@ const fadeOut = (element, visibility = 1, dur = durationFast) => {
 
 // Mobile Menu
 const header = document.querySelector('header');
-const logo = header.querySelectorAll('.logo');
 
 const hamburger = header.querySelector('.hamburger');
 hamburger.classList.add('closed');
@@ -38,7 +32,7 @@ gsap.to(overlay, { x: 100, opacity: 0, duration: 0 });
 
 const openMobileNav = () => {
     fadeIn(navLinksContainer, 1, 0, 'flex');
-    gsap.to(overlay, { x: 0, opacity: 1, duration: .3 })
+    gsap.to(overlay, { x: 0, opacity: .9, duration: .3 })
     gsap.to(navLinks, { x: 0, opacity: 1, stagger: .1, duration: .2 });
 }
 
@@ -64,6 +58,7 @@ if (screen.width <= 425) {
 } else {
     fadeIn(navLinksContainer, 1, 0, 'flex');
 }
+
 
 // gallery Section
 const galleryContainer = document.querySelector('#gallery');
