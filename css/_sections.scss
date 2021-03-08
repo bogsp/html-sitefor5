@@ -79,7 +79,7 @@
     .gallery-container {
         padding: size(md) 0 0;
         width: 100%;
-        @include grid-auto('4');
+        @include grid-col(4);
         img {
             height: 100%;
             cursor: pointer;
@@ -125,7 +125,7 @@
 #about {
     min-height: 84vh;
     .grid-content {
-        padding: size(lg) 0;
+        padding: size(xl) 0 size(lg);
         @include grid-2;
         gap: size(lg);
         h1 {
@@ -150,7 +150,7 @@
 #contact {
     min-height: 84vh;
     .grid-content {
-        padding: size(lg) 0;
+        padding: size(xl) 0 size(lg);
         @include grid-2(false);
         gap: size(lg);
         .info-container {
